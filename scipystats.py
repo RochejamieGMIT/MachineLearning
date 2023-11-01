@@ -56,4 +56,4 @@ print(results.expected_freq)
 # if no relationship between gender and medium then, we should has sam proportion of males liking books as we have in the data set (overall)
 
 print (40 * (29/80)) # this proportion of people prefer books, gender does not matter, 40 is number of people 29/80 is the proportion 
-print (40 * (51/80)) # this proportion of people prefer online, gender does not matter
+print (40 * (51/80)) # this proportion of people prefer online, gender does not matter..
