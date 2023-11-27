@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
 
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv"
 
@@ -28,4 +30,31 @@ X.iloc[0]
 
 # quick check classifer preficts right
 print(clf.predict(X.iloc[:1]))
+
+# Ask classifier to predict outputs for training set inputs.
+
+# count values of true
+eval = (clf.predict(X) == Y).sum()
+
+# total number of cases - first column
+count = X.shape[0]
+
+outcome = (eval/count)*100 
+
+print(outcome)
+
+
+# keep some samples for testing
+X_train,X_test,y_train,y_test = train_test_split(X,Y,random_state=35)
+
+clf.fit(X_train,y_train)
+
+# predict based on test test. 
+#proportion of correct classification
+print((clf.predict(X_test) == y_test).sum() / X_test.shape[0])
+
+
+#Run cross validation with 5 folds 
+print(cross_val_score(clf,X,Y,cv=5))
+
 
